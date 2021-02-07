@@ -4,7 +4,7 @@ Check it out at [@newspaper_snippets](https://www.instagram.com/newspaper_snippe
 This is a W.I.P. Especially this README. I'm going to fix it when I'm free. <3
 
 ## Things I think are neat about this project
-This bot uses computer vision to find areas of interest on these newspapers. Rather than selecting a random area and cropping it, @newspaper_snippets finds images contours and uses that as a starting area. This leads most images to be interesting pictures, ads, or whatever else 1900s newspapers decieded to put in. Sometimes it doesn't fully work though and you will get an image of text. :(
+@newspaper_snippets uses computer vision to find areas of interest on these newspapers. Rather than selecting a random area and cropping it, @newspaper_snippets finds images contours and uses that as a starting area. This leads most images to be interesting pictures, ads, or whatever else 1900s newspapers decieded to put in. Sometimes it doesn't fully work though and you will get an image of text. :(
 
 ## Why?
 I always wanted to create some form of art bot, but could never think of anything that would be interesting and different. This isn't that different either, but it was fun. It was created in a day, so the code is messy and is a hodgepodge of code. 
