@@ -34,6 +34,11 @@ outros = [
 	':)'
 ]
 
+hashtags = [
+	'newspaper_snippets',
+	'chroniclingamerica',
+	'history',
+]
 
 def downloadPDF():
 	print('Downloading PDF...')
@@ -53,7 +58,10 @@ def downloadPDF():
 	place_of_publication = random_paper_json['place_of_publication']
 	page = random.randint(1, 10)
 
-	caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro}'
+	footer = '\n\n#' + ' #'.join(hashtags)
+	caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {footer}'
+
+	print(caption)
 
 	paper_url = random_paper_json['url'][:-2] + str(page)
 	paper_pdf_url = f'https://chroniclingamerica.loc.gov/{paper_url}.pdf'

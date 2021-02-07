@@ -1,10 +1,13 @@
 import os
 import random
+from datetime import datetime
 
 import cv2
 
 import newspaper
 import snippets
+
+print(f'Running on {datetime.now()}...')
 
 caption = newspaper.downloadPDF()
 snippet_amount = 1
@@ -22,7 +25,8 @@ cv2.imwrite('post.jpg', cropped_img)
 
 cap_arg = caption.replace('"', '\\"')
 
-os.system(f'node ./instagram.js post.jpg "{cap_arg}"')
+os.popen(f'node ./instagram.js post.jpg "{cap_arg}"').read()
+print("Posted.")
 
 os.remove('post.jpg')
 

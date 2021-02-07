@@ -3,4 +3,4 @@ node_modules
 venv
 
 cookies.json
-error.err
+log.txt

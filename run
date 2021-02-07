@@ -1,8 +1,11 @@
 #!/bin/bash
 
+printf "==========================\n"
 cd ~/newspaperbot/
 source ./venv/bin/activate
 until python newspaper_snippets.py 
 do
+	printf "\n"
 	echo Retrying...
 done
+printf "==========================\n\n"
