@@ -1,4 +1,6 @@
 # @newspaper_snippets
+[![@newspaper_snippets logo](images/paper.jpg)](https://github.com/zackumar/newspaper_snippets)
+
 An Instagram "bot" that posts snippets of newspapers from 100 years ago!
 Check it out at [@newspaper_snippets](https://www.instagram.com/newspaper_snippets/)!
 This is a W.I.P. Especially this README. I'm going to fix it when I'm free. <3
