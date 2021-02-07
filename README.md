@@ -1,6 +1,7 @@
 # @newspaper_snippets
 An Instagram "bot" that posts snippets of newspapers from 100 years ago!
 Check it out at [@newspaper_snippets](https://www.instagram.com/newspaper_snippets/)!
+This is a W.I.P. Especially this README. I'm going to fix it when I'm free. <3
 
 ## Why?
 I always wanted to create some form of art bot, but could never think of anything that would be interesting and different. This isn't that different either, but it was fun. It was created in a day, so the code is messy and is a hodgepodge of code. 
