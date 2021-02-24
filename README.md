@@ -72,3 +72,10 @@ python newspaper_snippets.py
 ## Also!
 
 Check out [Chronicling America from the Library of Congress](https://chroniclingamerica.loc.gov/) where all of these images are from. It's pretty cool. They have a ton of newspapers from the U.S. I'm using the ones from 1777 to 1963 and there are a lot of editions. It's real neat.
+
+## Some Links!
+
+-   [Instagram](https://instagram.com/newspaper_snippets)
+-   [Twitter](https://twitter.com/news_snippets)
+-   [Blog Post](https://zackumar.github.io/blog?title=@newspaper_snippets)
+-   [linktr.ee](https://linktr.ee/news_snips)
