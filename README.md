@@ -2,7 +2,7 @@
 
 A bot that posts snippets of newspapers from 100 years ago! Check it out on Instagram at [@newspaper_snippets](https://instagram.com/newspaper_snippets) and on Twitter at [@news_snippets](https://twitter.com/news_snippets)!
 
-![instagram](./images/instagram.png)
+![instagram](./images/instagram.png#center)
 
 ## A Little Overview
 
@@ -98,3 +98,11 @@ Check out [Chronicling America from the Library of Congress](https://chronicling
 -   [Twitter](https://twitter.com/news_snippets)
 -   [Blog Post](https://zackumar.github.io/blog?title=@newspaper_snippets)
 -   [linktr.ee](https://linktr.ee/news_snips)
+
+<style>
+/* If you see this, guess you're not on github :P*/
+img[src*='#center'] { 
+    display: block;
+    margin: auto;
+}
+</style>
