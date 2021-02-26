@@ -1,7 +1,8 @@
 #!/bin/bash
 
 printf "==========================\n"
-until python ./src/newspaper_snippets.py 
+cd ./src
+until python newspaper_snippets.py 
 do
 	printf "\n"
 	echo Retrying...
