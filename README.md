@@ -2,7 +2,7 @@
 
 A bot that posts snippets of newspapers from 100 years ago! Check it out on Instagram at [@newspaper_snippets](https://instagram.com/newspaper_snippets) and on Twitter at [@news_snippets](https://twitter.com/news_snippets)!
 
-![instagram](./images/instagram.png)
+![instagram](./images/instagram.png#center)
 
 ## A Little Overview
 
@@ -45,29 +45,38 @@ git clone https://github.com/zackumar/newspaper_snippets.git
 pip install -r requirements.txt
 ```
 
-Then add your credentials to `ns_config.py`
+Just because I'm currently using a NodeJS module for Instagram, you'll need to also instal those dependencies.
 
-```python
-instagram = {
-    "username": "YOUR USERNAME",
-    "password": "YOUR PASSWORD"
-}
-
-twitter = {
-    "consumer_key": "KEY",
-    "consumer_secret": "SECRET",
-    "access_token_key": "KEY",
-    "access_token_secret": "SECRET"
-}
+```bash
+npm install
 ```
 
-For Instagram, all you need is an account's username and password, but for Twitter, you need to add an app to your account to get access to your tokens.
+For Instagram, all you need is an account's username and password, but for Twitter, you need to add an app to your account to get access to your tokens. You need to put those in your environment variables. You can use `pipenv` if you would like. 
+
+```
+instagram_username: <your username>
+instagram_password: <your password>
+
+twitter_consumer_key: <twitter consumer key>
+twitter_consumer_secret: <twitter consumer secret>
+twitter_access_token: <twitter access token>
+twitter_access_token_secret: <twitter access token secret>
+```
 
 After you should be able to run newspaper_snippets using:
 
 ```bash
-python newspaper_snippets.py
+python ./src/newspaper_snippets.py
 ```
+
+## Running it on heroku
+
+You can also run this using heroku.
+
+There are two ways to install it.
+You can fork this repo and deploy using github integration in the Heroku web app. Or you can clone this repo and deploy it using the Heroku CLI. Either way, you will need to add the same environement variables as above in Heroku's config vars.
+
+For Twitter, you will need to go to [developer.twitter.com](https://developer.twitter.com) and make and connect and app to your Twitter account. 
 
 ## Also!
 
