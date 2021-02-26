@@ -6,7 +6,6 @@ import cv2
 
 import newspaper
 import snippets
-import ns_config
 import ns_twitter
 
 import os
