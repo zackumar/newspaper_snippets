@@ -74,17 +74,7 @@ python ./src/newspaper_snippets.py
 You can also run this using heroku.
 
 There are two ways to install it.
-You can fork this repo and deploy using github integration in the Heroku web app. Or you can clone this repo and deploy it using the Heroku CLI. Either way, you will need to add these environment varibles:
-
-```
-instagram_username: <your username>
-instagram_password: <your password>
-
-twitter_consumer_key: <twitter consumer key>
-twitter_consumer_secret: <twitter consumer secret>
-twitter_access_token: <twitter access token>
-twitter_access_token_secret: <twitter access token secret>
-```
+You can fork this repo and deploy using github integration in the Heroku web app. Or you can clone this repo and deploy it using the Heroku CLI. Either way, you will need to add the same environement variables as above in Heroku's config vars.
 
 For Twitter, you will need to go to [developer.twitter.com](https://developer.twitter.com) and make and connect and app to your Twitter account. 
 
@@ -98,11 +88,3 @@ Check out [Chronicling America from the Library of Congress](https://chronicling
 -   [Twitter](https://twitter.com/news_snippets)
 -   [Blog Post](https://zackumar.github.io/blog?title=@newspaper_snippets)
 -   [linktr.ee](https://linktr.ee/news_snips)
-
-<style>
-/* If you see this, guess you're not on github :P*/
-img[src*='#center'] { 
-    display: block;
-    margin: auto;
-}
-</style>
