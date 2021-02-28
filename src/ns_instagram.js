@@ -1,5 +1,6 @@
 const Instagram = require('instagram-web-api')
 const FileCookieStore = require('tough-cookie-filestore2')
+const useragentFromSeed = require('useragent-from-seed')
 
 const argv = process.argv.slice(2)
 
@@ -13,5 +14,6 @@ const client = new Instagram({username: username, password: password, cookieStor
 
 ;(async () => {
 	await client.login()
+	console.log(useragentFromSeed('newspaper_snippets'))
 	await client.uploadPhoto({ photo, caption: caption, post: 'feed' })
 })()
