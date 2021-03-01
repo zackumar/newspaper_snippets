@@ -45,7 +45,7 @@ cv2.imwrite('post.jpg', cropped_img)
 cap_arg = caption.replace('"', '\\"')
 
 os.popen(
-    f'node ./ns_instagram.js {instagram["username"]} {instagram["password"]} post.jpg "{cap_arg}"').read()
+    f'node ./src/ns_instagram.js {instagram["username"]} {instagram["password"]} post.jpg "{cap_arg}"').read()
 print("Posted on Instagram.")
 
 ns_twitter.postTwitter(twitter, 'post.jpg', caption)
