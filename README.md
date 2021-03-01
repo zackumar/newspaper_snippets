@@ -45,7 +45,7 @@ git clone https://github.com/zackumar/newspaper_snippets.git
 pip install -r requirements.txt
 ```
 
-Just because I'm currently using a NodeJS module for Instagram, you'll need to also instal those dependencies.
+Just because I'm currently using a NodeJS module for Instagram, you'll need to also install those dependencies.
 
 ```bash
 npm install
