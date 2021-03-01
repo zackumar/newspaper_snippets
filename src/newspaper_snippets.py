@@ -25,10 +25,13 @@ twitter = {
 
 print(f'Running on {datetime.now()}...')
 
+print('Downloading PDF...')
 caption = newspaper.downloadPDF()
+print(caption)
 snippet_amount = 1
 
 path = './newspaper.pdf'
+print('Finding rectangular contours in PDF...')
 bounding_boxes = snippets.findBoxesInPDF(path)
 
 while len(bounding_boxes) < snippet_amount:
@@ -50,5 +53,6 @@ print("Posted on Twitter.")
 
 os.remove('post.jpg')
 
+print('Cleaning temp files...')
 newspaper.clean()
 snippets.clean()
