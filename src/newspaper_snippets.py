@@ -25,10 +25,13 @@ twitter = {
 
 print(f'Running on {datetime.now()}...')
 
+print('Downloading PDF...')
 caption = newspaper.downloadPDF()
+print(caption)
 snippet_amount = 1
 
 path = './newspaper.pdf'
+print('Finding rectangular contours in PDF...')
 bounding_boxes = snippets.findBoxesInPDF(path)
 
 while len(bounding_boxes) < snippet_amount:
@@ -42,7 +45,7 @@ cv2.imwrite('post.jpg', cropped_img)
 cap_arg = caption.replace('"', '\\"')
 
 os.popen(
-    f'node ./ns_instagram.js {instagram["username"]} {instagram["password"]} post.jpg "{cap_arg}"').read()
+    f'node ./src/ns_instagram.js {instagram["username"]} {instagram["password"]} post.jpg "{cap_arg}"').read()
 print("Posted on Instagram.")
 
 ns_twitter.postTwitter(twitter, 'post.jpg', caption)
@@ -50,5 +53,6 @@ print("Posted on Twitter.")
 
 os.remove('post.jpg')
 
+print('Cleaning temp files...')
 newspaper.clean()
 snippets.clean()
