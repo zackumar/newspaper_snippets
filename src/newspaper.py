@@ -42,7 +42,6 @@ hashtags = [
 
 
 def downloadPDF():
-    print('Downloading PDF...')
     dt = datetime.now().replace(tzinfo=pytz.utc).astimezone(
         pytz.timezone("US/Central")).date()
     hya = dt.replace(year=dt.year - 100, day=dt.day)
@@ -59,14 +58,12 @@ def downloadPDF():
     outro = random.choice(outros)
     publication = random_paper_json['label']
     place_of_publication = random_paper_json['place_of_publication']
-    page = random.randint(1, 10)
+    page = random.randint(1, random_paper_json['pages'])
 
     footer = '\n\n#' + ' #'.join(hashtags)
     caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {footer}'
 
-    print(caption)
-
-    paper_url = random_paper_json['url'][:-2] + str(page)
+    paper_url = random_paper_json['url'][1:-2] + str(page)
     paper_pdf_url = f'https://chroniclingamerica.loc.gov/{paper_url}.pdf'
 
     paper_pdf_request = requests.get(paper_pdf_url)
