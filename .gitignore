@@ -1,7 +1,10 @@
 __pycache__
 node_modules
 venv
+.vscode
 
 cookies.json
 log.txt
 ns_config.py
+.vscode/.ropeproject/config.py
+.vscode/.ropeproject/objectdb
