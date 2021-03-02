@@ -10,7 +10,9 @@ intros = [
     'Snippy snips',
     'Snippets',
     'Itty bitty pictures',
-    'History',
+    'Clips',
+    'Clippets',
+    'Snip snaps',
     'Snip snips',
     'Whatever they\'re called',
     'Snippies',
@@ -26,13 +28,17 @@ outros = [
     '❤️',
     '✨',
     '😊',
+    '😃',
+    '😛',
     '🥰',
     '🤨',
     '👍',
-    '❤️ Zack',
-    'The account that gives you random newspaper pictures because why not.',
+    'Zack ❤️',
+    'The account that gives you random newspaper pictures because why not?',
     ':)',
 ]
+
+warning = '\n\nHello. Zack here. Because these are snapshots of history, some are bound to be offensive. If you believe this post is overly offensive, feel free to DM me. - Z.U.'
 
 hashtags = [
     'newspaper_snippets',
@@ -61,7 +67,7 @@ def downloadPDF():
     page = random.randint(1, random_paper_json['pages'])
 
     footer = '\n\n#' + ' #'.join(hashtags)
-    caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {footer}'
+    caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {warning} {footer}'
 
     paper_url = random_paper_json['url'][1:-2] + str(page)
     paper_pdf_url = f'https://chroniclingamerica.loc.gov/{paper_url}.pdf'
