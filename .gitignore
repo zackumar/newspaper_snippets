@@ -6,5 +6,4 @@ venv
 cookies.json
 log.txt
 ns_config.py
-.vscode/.ropeproject/config.py
-.vscode/.ropeproject/objectdb
+src/testcode.py
