@@ -32,7 +32,7 @@ I always wanted to create some form of art bot, but could never think of anythin
 
 -   Better focal point detections (Such as prioritizing better images)
 
--   Better Instagram integration. I couldn't find any working python libraries, so I may make my own.
+-   ~~Better Instagram integration. I couldn't find any working python libraries, so I may make my own.~~ (Using instabot at the moment)
 
 -   Gain more followers. But that's not too important.
 
@@ -43,12 +43,6 @@ To install newspaper_snippets and run it on your own accounts, first clone it th
 ```bash
 git clone https://github.com/zackumar/newspaper_snippets.git
 pip install -r requirements.txt
-```
-
-Just because I'm currently using a NodeJS module for Instagram, you'll need to also install those dependencies.
-
-```bash
-npm install
 ```
 
 For Instagram, all you need is an account's username and password, but for Twitter, you need to add an app to your account to get access to your tokens. You need to put those in your environment variables. You can use `pipenv` if you would like. 
