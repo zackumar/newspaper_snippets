@@ -1,9 +1,7 @@
 __pycache__
-node_modules
 venv
 .vscode
+config
 
 cookies.json
 log.txt
-ns_config.py
-src/testcode.py
