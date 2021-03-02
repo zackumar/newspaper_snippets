@@ -44,10 +44,10 @@ cropped_img = snippets.cropImage(random_box)
 cv2.imwrite('post.jpg', cropped_img)
 
 ns_instagram.postInstagram(instagram, 'post.jpg', caption)
-print("Posted on Instagram.")
+print('Posted on Instagram.')
 
 ns_twitter.postTwitter(twitter, 'post.jpg', caption)
-print("Posted on Twitter.")
+print('Posted on Twitter.')
 
 os.remove('post.jpg')
 
