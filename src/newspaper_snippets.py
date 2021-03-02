@@ -6,6 +6,7 @@ import cv2
 
 import newspaper
 import snippets
+import ns_instagram
 import ns_twitter
 
 import os
@@ -42,10 +43,7 @@ random_box = random.choice(bounding_boxes)
 cropped_img = snippets.cropImage(random_box)
 cv2.imwrite('post.jpg', cropped_img)
 
-cap_arg = caption.replace('"', '\\"')
-
-os.popen(
-    f'node ./src/ns_instagram.js {instagram["username"]} {instagram["password"]} post.jpg "{cap_arg}"').read()
+ns_instagram.postInstagram(instagram, 'post.jpg', caption)
 print("Posted on Instagram.")
 
 ns_twitter.postTwitter(twitter, 'post.jpg', caption)
