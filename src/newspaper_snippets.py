@@ -28,7 +28,6 @@ print(f'Running on {datetime.now()}...')
 
 print('Downloading PDF...')
 insta_caption, twit_caption = newspaper.downloadPDF()
-print(insta_caption)
 
 path = './newspaper.pdf'
 print('Finding rectangular contours in PDF...')
@@ -36,10 +35,12 @@ print('Finding rectangular contours in PDF...')
 bounding_boxes = snippets.findBoxesInPDF('./newspaper.pdf')
 print(f'Bounding boxes: {bounding_boxes}')
 while len(bounding_boxes) == 0:
-    print('Boxes empty. Downloading new...')
+    print('No valid bounding boxes. Downloading new PDF...')
     insta_caption, twit_caption = newspaper.downloadPDF()
     bounding_boxes = snippets.findBoxesInPDF('./newspaper.pdf')
     print(f'Bounding boxes: {bounding_boxes}')
+
+print(f'Caption: {insta_caption}')
 
 random_box = random.choice(bounding_boxes)
 print(f'Cropping image: {random_box}')
