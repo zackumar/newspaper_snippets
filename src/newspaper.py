@@ -67,7 +67,8 @@ def downloadPDF():
     page = random.randint(1, random_paper_json['pages'])
 
     footer = '\n\n#' + ' #'.join(hashtags)
-    caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {warning} {footer}'
+    insta_caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {warning} {footer}'
+    twit_caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {footer}'
 
     paper_url = random_paper_json['url'][1:-2] + str(page)
     paper_pdf_url = f'https://chroniclingamerica.loc.gov/{paper_url}.pdf'
@@ -77,7 +78,7 @@ def downloadPDF():
     with open('./newspaper.pdf', 'wb') as f:
         f.write(paper_pdf_request.content)
 
-    return caption
+    return (insta_caption, twit_caption)
 
 
 def clean():
