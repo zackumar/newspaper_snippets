@@ -8,4 +8,5 @@ def postTwitter(twitter, filename, caption):
         twitter["access_token_key"], twitter["access_token_secret"])
     api = tweepy.API(auth)
 
-    api.update_with_media(filename, caption)
+    media = api.media_upload(filename)
+    api.update_status(caption, media_ids=[media.media_id])

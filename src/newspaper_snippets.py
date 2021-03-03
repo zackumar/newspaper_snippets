@@ -27,8 +27,8 @@ twitter = {
 print(f'Running on {datetime.now()}...')
 
 print('Downloading PDF...')
-caption = newspaper.downloadPDF()
-print(caption)
+insta_caption, twit_caption = newspaper.downloadPDF()
+print(insta_caption)
 
 path = './newspaper.pdf'
 print('Finding rectangular contours in PDF...')
@@ -37,7 +37,7 @@ bounding_boxes = snippets.findBoxesInPDF('./newspaper.pdf')
 print(f'Bounding boxes: {bounding_boxes}')
 while len(bounding_boxes) == 0:
     print('Boxes empty. Downloading new...')
-    caption = newspaper.downloadPDF()
+    insta_caption, twit_caption = newspaper.downloadPDF()
     bounding_boxes = snippets.findBoxesInPDF('./newspaper.pdf')
     print(f'Bounding boxes: {bounding_boxes}')
 
@@ -46,10 +46,10 @@ print(f'Cropping image: {random_box}')
 cropped_img = snippets.cropImage(random_box)
 cv2.imwrite('post.jpg', cropped_img)
 
-ns_instagram.postInstagram(instagram, 'post.jpg', caption)
+ns_instagram.postInstagram(instagram, 'post.jpg', insta_caption)
 print('Posted on Instagram.')
 
-ns_twitter.postTwitter(twitter, 'post.jpg', caption)
+ns_twitter.postTwitter(twitter, 'post.jpg', twit_caption)
 print('Posted on Twitter.')
 
 print('Cleaning temp files...')
