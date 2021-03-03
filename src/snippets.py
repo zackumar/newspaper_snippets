@@ -22,22 +22,20 @@ def findBoxesInPDF(path):
 
     vertical_kernel = cv2.getStructuringElement(
         cv2.MORPH_RECT, (1, kernel_length))
-    vertical_erosion = cv2.erode(invert, vertical_kernel, iterations=3)
-    vertical_dilate = cv2.dilate(
-        vertical_erosion, vertical_kernel, iterations=3)
+    vertical_open = cv2.morphologyEx(
+        invert, cv2.MORPH_OPEN, vertical_kernel, iterations=3)
 
     horizontal_kernel = cv2.getStructuringElement(
         cv2.MORPH_RECT, (kernel_length, 1))
-    horizontal_erosion = cv2.erode(invert, horizontal_kernel, iterations=3)
-    horizontal_dilate = cv2.dilate(
-        horizontal_erosion, horizontal_kernel, iterations=3)
+    horizontal_open = cv2.morphologyEx(
+        invert, cv2.MORPH_OPEN, horizontal_kernel, iterations=3)
 
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     alpha = 0.5
     beta = 1.0 - alpha
 
     combined_lines_weighted = cv2.addWeighted(
-        vertical_dilate, alpha, horizontal_dilate, beta, 0.0)
+        vertical_open, alpha, horizontal_open, beta, 0.0)
     combined_lines_erode = cv2.erode(
         ~combined_lines_weighted, kernel, iterations=3)
     retval, thresh1 = cv2.threshold(
@@ -46,44 +44,18 @@ def findBoxesInPDF(path):
     combined_lines = 255-thresh1
 
     contours, hierarchy = cv2.findContours(
-        combined_lines, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        combined_lines, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 
     for i in range(len(contours)):
         x, y, w, h = cv2.boundingRect(contours[i])
-        if(w > 200 and h > 200):
-            box_list.append((x, y, w, h))
+        if(w > 500 and h > 500):
+            if(w < 2000 and h < 2000):
+                box_list.append((x, y, w, h))
 
     return box_list
 
 
-def getRandomBoxes(box_list, n, nearness):
-    print('Getting random samples...')
-    random_samples = []
-    while len(random_samples) != n:
-        cont = False
-        sample = random.choice(box_list)
-        if sample in random_samples:
-            print(f'Repeat {sample}. Resampling...')
-            continue
-        for sX, sY, sW, sH in random_samples:
-            (x, y, w, h) = sample
-            if abs(sX - x) < nearness and abs(sY - y) < nearness:
-                print(
-                    f'Too close: {sample}, {(sX, sY, sW, sH)}. Resampling...')
-                cont = True
-                break
-        if cont:
-            continue
-
-        random_samples.append(sample)
-
-    print('Samples: ' + str(random_samples))
-    return random_samples
-
-
 def cropImage(bounding_box):
-    print(f'Cropping image: {bounding_box}')
-
     x, y, w, h = bounding_box
     img = cv2.imread('./tempImage.jpg')
     imgH, imgW, imgC = img.shape
