@@ -43,14 +43,8 @@ def findBoxesInPDF(path):
 
     combined_lines = 255-thresh1
 
-    cv2.imwrite('./combinedLines.jpg', combined_lines)
-
     contours, hierarchy = cv2.findContours(
         combined_lines, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-
-    print(contours)
-    contours = contours[3:]
-    print(hierarchy)
 
     for i in range(len(contours)):
         x, y, w, h = cv2.boundingRect(contours[i])
@@ -58,7 +52,6 @@ def findBoxesInPDF(path):
             if(w < 2000 and h < 2000):
                 box_list.append((x, y, w, h))
 
-    cv2.imwrite('./bb_box.jpg', img)
     return box_list
 
 
@@ -103,8 +96,3 @@ def cropImage(bounding_box):
 
 def clean():
     os.remove('tempImage.jpg')
-
-
-# findSectionInPDF('./newspaper.pdf')
-findImageInPDF('./newspaper.pdf')
-findBoxesInPDF('./newspaper.pdf')
