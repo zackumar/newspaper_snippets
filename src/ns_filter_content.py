@@ -1,17 +1,25 @@
-import pytesseract
-from PIL import Image
-import cv2
+import json
+
+import requests
 
 
-def isSensitive(img, word_list):
-    ocr = pytesseract.image_to_string(img).lower()
+def score(key, text, attributes=['TOXICITY']):
+    url = 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze'
+    tests = {}
+    for attribute in attributes:
+        tests[attribute] = {}
 
-    with open(word_list) as f:
-        for word in f:
-            if word.lower().strip() in ocr:
-                return True
+    querystring = {'key': key}
+    payload_data = {'comment': {'text': text}, 'requestedAttributes': {}}
+    for test in tests.keys():
+        payload_data["requestedAttributes"][test] = tests[test]
 
-    return False
+    payload = json.dumps(payload_data)
+    headers = {'content-type': 'application/json'}
 
+    response = requests.post(url,
+                             data=payload,
+                             headers=headers,
+                             params=querystring)
 
-print(isSensitive(cv2.imread('./post.jpg'), './sensitivewords.txt'))
+    return response.json()
