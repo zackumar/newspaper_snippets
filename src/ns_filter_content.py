@@ -1,6 +1,20 @@
 import json
 
 import requests
+import pytesseract
+
+import cv2
+
+
+def getText(img):
+    thr = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)[1]
+    thresh = 255-thr
+
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    close = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+    result = 255-close
+
+    return pytesseract.image_to_string(result).strip()
 
 
 def score(key, text, attributes=['TOXICITY']):
@@ -23,3 +37,13 @@ def score(key, text, attributes=['TOXICITY']):
                              params=querystring)
 
     return response.json()
+
+
+def hasSensitiveWords(text, wordListPath):
+    text = text.lower()
+
+    with open(wordListPath) as f:
+        for line in f:
+            if line.rstrip() in text:
+                return True
+    return False
