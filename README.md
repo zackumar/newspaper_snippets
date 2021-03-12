@@ -30,11 +30,15 @@ I always wanted to create some form of art bot, but could never think of anythin
 
 ## What I Want to Add
 
--   Better focal point detections (Such as prioritizing better images)
+-   ~~Better focal point detections (Such as prioritizing better images)~~ (Somewhat better. Beeter box detection)
 
 -   ~~Better Instagram integration. I couldn't find any working python libraries, so I may make my own.~~ (Using instabot at the moment)
 
 -   Gain more followers. But that's not too important.
+
+## What I'm currently working on
+
+- Disclaimer for indecent and offensive language as well as offensive images. (Images are harder to detect, but language can use Perspective and OCR)
 
 ## Running it on Your Own
 
