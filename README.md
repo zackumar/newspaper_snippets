@@ -6,13 +6,13 @@ A bot that posts snippets of newspapers from 100 years ago! Check it out on Inst
 
 ## A Little Overview
 
-So, recently, I built a bot that posts snippets of newspapers from exactly 100 years ago. Hence the name: newspaper_snippets! Here's what its jobs are:
+So, recently, I built a bot that posts snippets of newspapers from exactly 100 years ago. Hence the name: newspaper_snippets! Here's what its tasks are:
 
 -   Downloads a newspaper from Chronicling America
 
 -   Finds a good focal point (though not all of them are the greatest)
 
--   Crops the image with a size of 1024 by 1024 (Max 1:1 size for Instagram)
+-   Crops the image with a size of 1080 by 1080 (Max 1:1 size for Instagram)
 
 -   Posts it on Instagram at [@newspaper_snippets](https://instagram.com/newspaper_snippets) and on Twitter at [@news_snippets](https://twitter.com/news_snippets)
 
