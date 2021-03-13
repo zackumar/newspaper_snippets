@@ -4,6 +4,8 @@ import os
 
 import pytz
 import requests
+import cv2
+import numpy as np
 
 intros = [
     'Newspaper snippets',
@@ -47,7 +49,7 @@ hashtags = [
 ]
 
 
-def downloadPDF():
+def downloadJP2():
     dt = datetime.now().replace(tzinfo=pytz.utc).astimezone(
         pytz.timezone("US/Central")).date()
     hya = dt.replace(year=dt.year - 100, day=dt.day)
@@ -56,8 +58,8 @@ def downloadPDF():
     papers_json_url = 'https://chroniclingamerica.loc.gov/frontpages/' + \
         str(hya) + '.json'
 
-    papers_json_request = requests.get(papers_json_url)
-    papers_json = papers_json_request.json()
+    papers_json_resp = requests.get(papers_json_url)
+    papers_json = papers_json_resp.json()
 
     random_paper_json = random.choice(papers_json)
     intro = random.choice(intros)
@@ -71,15 +73,10 @@ def downloadPDF():
     twit_caption = f'{intro} from {place_of_publication} in "{publication}", {hya_pretty}. Page {page}. - {outro} {footer}'
 
     paper_url = random_paper_json['url'][1:-2] + str(page)
-    paper_pdf_url = f'https://chroniclingamerica.loc.gov/{paper_url}.pdf'
+    paper_pdf_url = f'https://chroniclingamerica.loc.gov/{paper_url}.jp2'
 
-    paper_pdf_request = requests.get(paper_pdf_url)
+    paper_pdf_resp = requests.get(paper_pdf_url, stream=True).raw
+    img = np.asarray(bytearray(paper_pdf_resp.read()), dtype="uint8")
+    image = cv2.imdecode(img, cv2.IMREAD_COLOR)
 
-    with open('./newspaper.pdf', 'wb') as f:
-        f.write(paper_pdf_request.content)
-
-    return (insta_caption, twit_caption)
-
-
-def clean():
-    os.remove('./newspaper.pdf')
+    return (image, insta_caption, twit_caption)
