@@ -1,6 +1,7 @@
 import json
 
 import requests
+from bs4 import BeautifulSoup
 import pytesseract
 
 import cv2
@@ -47,3 +48,12 @@ def hasSensitiveWords(text, wordListPath):
             if line.rstrip() in text:
                 return True
     return False
+
+
+def getNewspaperOCR(path):
+    response = requests.get(path)
+    return BeautifulSoup(response.text).find('p').get_text()
+
+
+print(getNewspaperOCR(
+    'https://chroniclingamerica.loc.gov/lccn/sn87055779/1921-03-13/ed-1/seq-1/ocr/'))
