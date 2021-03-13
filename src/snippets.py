@@ -6,13 +6,8 @@ import numpy as np
 from pdf2image import convert_from_path
 
 
-def findBoxesInPDF(path):
+def findBoxes(img):
     box_list = []
-
-    newspaper_img = convert_from_path(os.path.realpath(path))
-    newspaper_img[0].save('tempImage.jpg', 'JPEG')
-
-    img = cv2.imread('tempImage.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     retval, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
@@ -55,9 +50,8 @@ def findBoxesInPDF(path):
     return box_list
 
 
-def cropImage(bounding_box):
+def cropImage(img, bounding_box):
     x, y, w, h = bounding_box
-    img = cv2.imread('./tempImage.jpg')
     imgH, imgW, imgC = img.shape
 
     centerX = x + (w // 2)
@@ -92,7 +86,3 @@ def cropImage(bounding_box):
     cropped_img = img[y1:y2, x1:x2]
 
     return cropped_img
-
-
-def clean():
-    os.remove('tempImage.jpg')
