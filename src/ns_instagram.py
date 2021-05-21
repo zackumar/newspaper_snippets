@@ -7,8 +7,8 @@ def postInstagram(instagram, filename, caption):
     try:
         cl.login(username=instagram['username'],
                  password=instagram['password'])
-    except e:
-        print(e)
+    except:
+        print('Hit error but continuing')
 
     print('Uploading...')
     cl.photo_upload(filename, caption)
