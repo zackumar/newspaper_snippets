@@ -1,6 +1,5 @@
 from datetime import datetime
 import random
-import os
 
 import pytz
 import requests
