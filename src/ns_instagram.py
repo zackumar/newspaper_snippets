@@ -1,7 +1,7 @@
-from instabot import Bot
+from instagrapi import Client
 
 
 def postInstagram(instagram, filename, caption):
-    bot = Bot()
-    bot.login(username=instagram['username'], password=instagram['password'])
-    bot.upload_photo(filename, caption=caption, options={'rename': False})
+    cl = Client()
+    cl.login(username=instagram['username'], password=instagram['password'])
+    cl.photo_upload(filename, caption)
